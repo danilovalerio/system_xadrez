@@ -1,7 +1,10 @@
+import tabuleiro.Posicao;
+
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("Funcionando.....");
+        Posicao test = new Posicao(3,10);
+        System.out.println(test);
     }
 }
 
