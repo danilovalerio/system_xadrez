@@ -28,9 +28,23 @@ public class PartidaXadrez {
         return matriz;
     }
 
+    /**
+     * Passa a posicao de coordenadas de matriz para a posição de coordenadas do xadrez
+     * @param coluna
+     * @param linha
+     * @param peca
+     */
+    private void posicaoNovaPeca(char coluna, int linha, PecaXadrez peca) {
+        System.out.println("posicao da peca: "+peca.getClass());
+        tabuleiro.posicaPeca(peca, new PosicaoXadrez(coluna, linha).paraPosicaoMatriz());
+    }
+
     private void initialSetup(){
-        tabuleiro.posicaPeca(new Torre(tabuleiro, Color.BRANCO), new Posicao(2,1));
-        tabuleiro.posicaPeca(new Rei(tabuleiro, Color.PRETO), new Posicao(0,4));
-        tabuleiro.posicaPeca(new Torre(tabuleiro, Color.PRETO), new Posicao(0,5));
+        //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.BRANCO), new Posicao(2,1));
+        posicaoNovaPeca('b', 6, new Torre(tabuleiro, Color.BRANCO));
+        //tabuleiro.posicaPeca(new Rei(tabuleiro, Color.PRETO), new Posicao(0,4));
+        posicaoNovaPeca('a', 1, new Rei(tabuleiro, Color.PRETO));
+        //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.PRETO), new Posicao(0,5));
+        posicaoNovaPeca('c', 2, new Torre(tabuleiro, Color.PRETO));
     }
 }

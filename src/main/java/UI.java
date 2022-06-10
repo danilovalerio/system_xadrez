@@ -3,7 +3,7 @@ import xadrez.PecaXadrez;
 public class UI {
     public static void printBoard(PecaXadrez[][] pecas){
         for (int i = 0; i < pecas.length; i++) {
-            System.out.printf((8 - i) + " - ");
+            System.out.printf((8 - i) + " ");
             for (int j = 0; j < pecas.length; j++) {
                 printPiece(pecas[i][j]);
             }
