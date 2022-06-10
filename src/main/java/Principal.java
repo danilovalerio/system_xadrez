@@ -1,10 +1,10 @@
-import tabuleiro.Posicao;
+import xadrez.PartidaXadrez;
 
 public class Principal {
 
     public static void main(String[] args) {
-        Posicao test = new Posicao(3,10);
-        System.out.println(test);
+        PartidaXadrez chessMatch = new PartidaXadrez();
+        UI.printBoard(chessMatch.getPecasXadrez());
     }
 }
 

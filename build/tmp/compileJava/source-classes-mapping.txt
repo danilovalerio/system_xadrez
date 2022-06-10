@@ -1,2 +1,16 @@
+xadrez/PartidaXadrez.java
+ xadrez.PartidaXadrez
+UI.java
+ UI
 Principal.java
  Principal
+tabuleiro/Peca.java
+ tabuleiro.Peca
+tabuleiro/Posicao.java
+ tabuleiro.Posicao
+tabuleiro/Tabuleiro.java
+ tabuleiro.Tabuleiro
+xadrez/PecaXadrez.java
+ xadrez.PecaXadrez
+xadrez/Color.java
+ xadrez.Color
