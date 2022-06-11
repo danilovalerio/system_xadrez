@@ -1,10 +1,12 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import xadrez.Color;
 import xadrez.PecaXadrez;
-
-
+import xadrez.PosicaoXadrez;
 
 public class UI {
 
+    //TODO: Extrair para Color.java essas Cores ;)
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_BLUE = "\u001B[34m";
@@ -14,6 +16,20 @@ public class UI {
 
     public static final String ANSI_YELLOW_BACKGROUND = "\u001B[42m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    public static PosicaoXadrez lerPosicaoXadrez(Scanner sc) {
+        try {
+            String s = sc.nextLine();
+            char coluna = s.charAt(0);
+            int linha = Integer.parseInt(s.substring(1));
+            return new PosicaoXadrez(coluna, linha);
+        } catch (RuntimeException e) {
+            throw new InputMismatchException(
+                    "Erro ao ler posição de xadrez, posições válidas são de a1 até h8."
+            );
+        }
+
+    }
 
     public static void printBoard(PecaXadrez[][] pecas){
         for (int i = 0; i < pecas.length; i++) {
