@@ -38,7 +38,8 @@ public class PartidaXadrez {
     }
 
     private Peca realizaMovimento(Posicao origem, Posicao destino){
-        Peca p = tabuleiro.removePeca(origem);
+        Peca p = tabuleiro.peca(origem);
+        tabuleiro.removePeca(origem);
         Peca pecaCapturada = tabuleiro.removePeca(destino);
         tabuleiro.posicaoPeca(p, destino);
         return pecaCapturada;
