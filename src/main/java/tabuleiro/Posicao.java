@@ -25,6 +25,16 @@ public class Posicao {
         this.coluna = coluna;
     }
 
+    /**
+     * Atualiza os valores de uma posição
+     * @param linha nova linha
+     * @param coluna nova coluna
+     */
+    public void setValores(int linha, int coluna) {
+        this.linha = linha;
+        this.coluna = coluna;
+    }
+
     @Override
     public String toString() {
         return "Posicao{" +
