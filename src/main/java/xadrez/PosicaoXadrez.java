@@ -31,7 +31,7 @@ public class PosicaoXadrez {
     protected Posicao paraPosicaoMatriz() {
         int linhaPos = 8 - linha;
         int colPos = coluna -'a';
-        System.out.println("contato ok");
+//        System.out.println("contato ok");
         return new Posicao(linhaPos, colPos);
     }
 
