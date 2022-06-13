@@ -49,6 +49,9 @@ public class PartidaXadrez {
         if (!tabuleiro.posicaoJaTemPeca(posicao)) {
             throw new XadrezException("Não tem peça na posição de origem");
         }
+        if (!tabuleiro.peca(posicao).temAlgumMovimentoPossivel()) {
+            throw new XadrezException("Não tem movimentos possíveis para peça escolhida");
+        }
     }
 
     /**
