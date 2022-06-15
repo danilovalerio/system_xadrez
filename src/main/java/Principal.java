@@ -16,7 +16,7 @@ public class Principal {
                 UI.limpaTela();
                 UI.printBoard(chessMatch.getPecasXadrez());
                 System.out.println();
-                System.out.println("Origem: ");
+                System.out.print("Origem: ");
                 PosicaoXadrez origem = UI.lerPosicaoXadrez(sc);
 
                 boolean[][] movimentosPossiveis = chessMatch.movimentosPossiveis(origem);
@@ -24,7 +24,7 @@ public class Principal {
                 UI.printBoard(chessMatch.getPecasXadrez(), movimentosPossiveis);
 
                 System.out.println();
-                System.out.println("Destino: ");
+                System.out.print("Destino: ");
                 PosicaoXadrez destino = UI.lerPosicaoXadrez(sc);
 
                 PecaXadrez pecaCapturada = chessMatch.performXadrezMove(origem, destino);

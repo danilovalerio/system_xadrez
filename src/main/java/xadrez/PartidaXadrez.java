@@ -97,5 +97,6 @@ public class PartidaXadrez {
         posicaoNovaPeca('a', 1, new Rei(tabuleiro, Color.PRETO));
         //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.PRETO), new Posicao(0,5));
         posicaoNovaPeca('c', 2, new Torre(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('e', 2, new Rei(tabuleiro, Color.BRANCO));
     }
 }
