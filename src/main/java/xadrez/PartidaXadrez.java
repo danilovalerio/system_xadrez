@@ -29,6 +29,21 @@ public class PartidaXadrez {
         return matriz;
     }
 
+    /**
+     * Exibe os movimentos possíveis a partir de uma posição de origem
+     * @param posicaoOrigem posição atual da peça que será movida
+     * @return os movimentos possíveis
+     */
+    public boolean[][] movimentosPossiveis(PosicaoXadrez posicaoOrigem) {
+        /**
+         * Converte posicao de xadrez para posicao de matriz
+         */
+        Posicao posicao = posicaoOrigem.paraPosicaoMatriz();
+        validaPosicaoOrigem(posicao);
+        return tabuleiro.peca(posicao).movimentosPossiveis();
+
+    }
+
     public PecaXadrez performXadrezMove(PosicaoXadrez origem, PosicaoXadrez destino){
         Posicao source = origem.paraPosicaoMatriz();
         Posicao target = destino.paraPosicaoMatriz();
