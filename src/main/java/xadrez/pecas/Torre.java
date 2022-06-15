@@ -27,22 +27,27 @@ public class Torre extends PecaXadrez {
         /**
          * Vamos "olhar" nas 4 direcoes da peca para ver aonde ela pode percorrer
          */
-        Posicao posicaoInicial = new Posicao(0,0);
+        Posicao posicaoInicial = new Posicao(0, 0);
 
         /**
          * Verifica as alinhas ACIMA
          */
-        posicao.setValores(posicao.getLinha() - 1, posicao.getColuna());
+        posicaoInicial.setValores(posicao.getLinha() - 1, posicao.getColuna());
 
         /**
          * Enquanto exisitir posição e tiver uma peça verifica a linha de cima (-1)
          */
         while (getTabuleiro().posicaoExiste(posicaoInicial) && !getTabuleiro().posicaoJaTemPeca(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
-            posicaoInicial.setLinha(posicaoInicial.getLinha() - 1);
+            System.out.println("CIMA: Posição Linha" + (posicaoInicial.getLinha()));
+            if (posicaoInicial.getLinha() > 0) {
+                posicaoInicial.setLinha(posicaoInicial.getLinha() - 1);
+            } else {
+                break;
+            }
         }
 
-        if (getTabuleiro().posicaoExiste(posicao) && eUmaPecaDoOponente(posicaoInicial)) {
+        if (getTabuleiro().posicaoExiste(posicaoInicial) && eUmaPecaDoOponente(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
         }
 
@@ -50,35 +55,42 @@ public class Torre extends PecaXadrez {
          * Verifica as colunas a ESQUERDA
          */
         //posicaoInicial = new Posicao(0,0);
-        posicao.setValores(posicao.getLinha(), posicao.getColuna() - 1);
+        posicaoInicial.setValores(posicao.getLinha(), posicao.getColuna() - 1);
 
         /**
          * Enquanto exisitir posição e tiver uma peça verifica a coluna a esquerda (-1)
          */
         while (getTabuleiro().posicaoExiste(posicaoInicial) && !getTabuleiro().posicaoJaTemPeca(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
-            posicaoInicial.setColuna(posicaoInicial.getColuna() - 1);
+            if (posicaoInicial.getColuna() > 0) {
+                posicaoInicial.setColuna(posicaoInicial.getColuna() - 1);
+            } else {
+                break;
+            }
         }
 
-        if (getTabuleiro().posicaoExiste(posicao) && eUmaPecaDoOponente(posicaoInicial)) {
+        if (getTabuleiro().posicaoExiste(posicaoInicial) && eUmaPecaDoOponente(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
         }
 
         /**
          * Verifica as colunas a DIREITA
          */
-        //posicaoInicial = new Posicao(0,0);
-        posicao.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+        posicaoInicial.setValores(posicao.getLinha(), posicao.getColuna() + 1);
 
         /**
          * Enquanto exisitir posição e tiver uma peça verifica a coluna a direita (+1)
          */
         while (getTabuleiro().posicaoExiste(posicaoInicial) && !getTabuleiro().posicaoJaTemPeca(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
-            posicaoInicial.setColuna(posicaoInicial.getColuna() + 1);
+            if (posicaoInicial.getColuna() < 7) {
+                posicaoInicial.setColuna(posicaoInicial.getColuna() + 1);
+            } else {
+                break;
+            }
         }
 
-        if (getTabuleiro().posicaoExiste(posicao) && eUmaPecaDoOponente(posicaoInicial)) {
+        if (getTabuleiro().posicaoExiste(posicaoInicial) && eUmaPecaDoOponente(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
         }
 
@@ -86,14 +98,18 @@ public class Torre extends PecaXadrez {
          * Verifica as linhas ABAIXO
          */
         //posicaoInicial = new Posicao(0,0);
-        posicao.setValores(posicao.getLinha() + 1, posicao.getColuna());
+        posicaoInicial.setValores(posicao.getLinha() + 1, posicao.getColuna());
 
         /**
          * Enquanto exisitir posição e tiver uma peça verifica a coluna a direita (+1)
          */
         while (getTabuleiro().posicaoExiste(posicaoInicial) && !getTabuleiro().posicaoJaTemPeca(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
-            posicaoInicial.setLinha(posicaoInicial.getLinha() + 1);
+            if (posicaoInicial.getLinha() < 7) {
+                posicaoInicial.setLinha(posicaoInicial.getLinha() + 1);
+            } else {
+                break;
+            }
         }
 
         if (getTabuleiro().posicaoExiste(posicao) && eUmaPecaDoOponente(posicaoInicial)) {
