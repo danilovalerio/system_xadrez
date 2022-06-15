@@ -10,12 +10,26 @@ public class PartidaXadrez {
     /**
      * Uma partida tem que ter um TABULEIRO
      * Tem que saber o TAMANHO do TABULEIRO
+     * Tem que ter rodada (turno)
+     * Jogador
      */
     private Tabuleiro tabuleiro;
+    private int turno;
+    private Color jogadorAtual;
 
     public PartidaXadrez(){
         tabuleiro = new Tabuleiro(8,8);
+        turno = 1;
+        jogadorAtual = Color.BRANCO;
         initialSetup();
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public Color getJogadorAtual() {
+        return jogadorAtual;
     }
 
     public PecaXadrez[][] getPecasXadrez(){
@@ -50,6 +64,7 @@ public class PartidaXadrez {
         validaPosicaoOrigem(source);
         validaPosicaoDestino(source, target);
         Peca pecaCapturada = realizaMovimento(source, target);
+        proximoTurno();
         return (PecaXadrez) pecaCapturada;
     }
 
@@ -65,6 +80,9 @@ public class PartidaXadrez {
         if (!tabuleiro.posicaoJaTemPeca(posicao)) {
             throw new XadrezException("Não tem peça na posição de origem");
         }
+        if (jogadorAtual != ((PecaXadrez) tabuleiro.peca(posicao)).getColor()) {
+            throw new XadrezException("Peça escolhida não é sua.");
+        }
         if (!tabuleiro.peca(posicao).temAlgumMovimentoPossivel()) {
             throw new XadrezException("Não tem movimentos possíveis para peça escolhida");
         }
@@ -77,6 +95,14 @@ public class PartidaXadrez {
         if (!tabuleiro.peca(origem).movimentoPossivel(destino)) {
             throw new XadrezException("A peça de origem não pode se mover para a posição de destino.");
         }
+    }
+
+    /**
+     * Troca de turno e o Jogador Atual que terá a vez de fazer a jogada
+     */
+    private void proximoTurno(){
+        turno++;
+        jogadorAtual = (jogadorAtual == Color.BRANCO) ? Color.PRETO : Color.BRANCO;
     }
 
     /**

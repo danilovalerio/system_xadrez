@@ -14,7 +14,7 @@ public class Principal {
         while (true) {
             try {
                 UI.limpaTela();
-                UI.printBoard(chessMatch.getPecasXadrez());
+                UI.printPartida(chessMatch);
                 System.out.println();
                 System.out.print("Origem: ");
                 PosicaoXadrez origem = UI.lerPosicaoXadrez(sc);
@@ -30,6 +30,7 @@ public class Principal {
                 PecaXadrez pecaCapturada = chessMatch.performXadrezMove(origem, destino);
             } catch (XadrezException | InputMismatchException e) {
                 System.out.println(e.getMessage());
+                System.out.print("Pression ENTER para continuar...");
                 sc.nextLine();
             }
 
