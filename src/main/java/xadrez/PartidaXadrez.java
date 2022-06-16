@@ -77,7 +77,6 @@ public class PartidaXadrez {
         Peca p = tabuleiro.peca(origem);
         tabuleiro.removePeca(origem);
         Peca capturada = tabuleiro.peca(destino);
-        //TODO: Testar peca capturada
         tabuleiro.removePeca(destino);
         tabuleiro.posicaoPeca(p, destino);
 
