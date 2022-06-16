@@ -54,9 +54,7 @@ public class PartidaXadrez {
      * @return os movimentos possíveis
      */
     public boolean[][] movimentosPossiveis(PosicaoXadrez posicaoOrigem) {
-        /**
-         * Converte posicao de xadrez para posicao de matriz
-         */
+        // Converte posicao de xadrez para posicao de matriz
         Posicao posicao = posicaoOrigem.paraPosicaoMatriz();
         validaPosicaoOrigem(posicao);
         return tabuleiro.peca(posicao).movimentosPossiveis();
@@ -100,9 +98,7 @@ public class PartidaXadrez {
     }
 
     private void validaPosicaoDestino(Posicao origem, Posicao destino){
-        /**
-         * Se para a peça de origem a posição de destino não é um movimento possível
-         */
+        /* Se para a peça de origem a posição de destino não é um movimento possível */
         if (!tabuleiro.peca(origem).movimentoPossivel(destino)) {
             throw new XadrezException("A peça de origem não pode se mover para a posição de destino.");
         }
@@ -118,9 +114,9 @@ public class PartidaXadrez {
 
     /**
      * Passa a posicao de coordenadas de matriz para a posição de coordenadas do xadrez
-     * @param coluna
-     * @param linha
-     * @param peca
+     * @param coluna da matriz
+     * @param linha da matriz
+     * @param peca peca de xadrez
      */
     private void posicaoNovaPeca(char coluna, int linha, PecaXadrez peca) {
         tabuleiro.posicaoPeca(peca, new PosicaoXadrez(coluna, linha).paraPosicaoMatriz());
