@@ -1,5 +1,7 @@
 package xadrez;
 
+import java.util.ArrayList;
+import java.util.List;
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -16,6 +18,9 @@ public class PartidaXadrez {
     private Tabuleiro tabuleiro;
     private int turno;
     private Color jogadorAtual;
+
+    private List<Peca> pecasNoTabuleiro = new ArrayList<>();
+    private List<Peca> pecasCapturadas = new ArrayList<>();
 
     public PartidaXadrez(){
         tabuleiro = new Tabuleiro(8,8);
@@ -71,9 +76,16 @@ public class PartidaXadrez {
     private Peca realizaMovimento(Posicao origem, Posicao destino){
         Peca p = tabuleiro.peca(origem);
         tabuleiro.removePeca(origem);
-        Peca pecaCapturada = tabuleiro.removePeca(destino);
+        Peca capturada = tabuleiro.peca(destino);
+        //TODO: Testar peca capturada
+        tabuleiro.removePeca(destino);
         tabuleiro.posicaoPeca(p, destino);
-        return pecaCapturada;
+
+        if (capturada != null) {
+            pecasNoTabuleiro.remove(capturada);
+            pecasCapturadas.add(capturada);
+        }
+        return capturada;
     }
 
     private void validaPosicaoOrigem(Posicao posicao) {
@@ -112,17 +124,26 @@ public class PartidaXadrez {
      * @param peca
      */
     private void posicaoNovaPeca(char coluna, int linha, PecaXadrez peca) {
-        System.out.println("posicao da peca: "+peca.getClass());
         tabuleiro.posicaoPeca(peca, new PosicaoXadrez(coluna, linha).paraPosicaoMatriz());
+        pecasNoTabuleiro.add(peca);
     }
 
     private void initialSetup(){
         //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.BRANCO), new Posicao(2,1));
-        posicaoNovaPeca('b', 6, new Torre(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('b', 7, new Torre(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('c', 7, new Torre(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('d', 7, new Torre(tabuleiro, Color.BRANCO));
         //tabuleiro.posicaPeca(new Rei(tabuleiro, Color.PRETO), new Posicao(0,4));
-        posicaoNovaPeca('a', 1, new Rei(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('a', 8, new Rei(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('b', 8, new Rei(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('c', 8, new Rei(tabuleiro, Color.BRANCO));
         //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.PRETO), new Posicao(0,5));
+        posicaoNovaPeca('a', 2, new Torre(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('b', 2, new Torre(tabuleiro, Color.PRETO));
         posicaoNovaPeca('c', 2, new Torre(tabuleiro, Color.PRETO));
-        posicaoNovaPeca('e', 2, new Rei(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('d', 2, new Torre(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('a', 1, new Rei(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('b', 1, new Rei(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('c', 1, new Rei(tabuleiro, Color.PRETO));
     }
 }

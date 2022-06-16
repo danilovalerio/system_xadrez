@@ -47,7 +47,7 @@ public class UI {
         printPecasCatpuradas(pecasCapturadas);
         System.out.println();
         System.out.println("Rodada: "+ partidaXadrez.getTurno());
-        System.out.println("Aguardando jogador de peça: " + partidaXadrez.getJogadorAtual());
+        System.out.print("Aguardando jogador de peça: " + partidaXadrez.getJogadorAtual());
     }
 
     public static void printBoard(PecaXadrez[][] pecas){
@@ -83,9 +83,11 @@ public class UI {
             System.out.print("-" + ANSI_RESET);
         } else {
             if (peca.getColor().equals(Color.BRANCO)) {
-                System.out.print(ANSI_WHITE_BACKGROUND + peca.toString() + ANSI_RESET);
+                //System.out.print(ANSI_WHITE_BACKGROUND + peca.toString() + ANSI_RESET);
+                System.out.print(peca.toString() + ANSI_RESET);
             } else {
-                System.out.print(ANSI_WHITE_BACKGROUND + ANSI_BLACK + peca.toString() + ANSI_RESET);
+                //System.out.print(ANSI_WHITE_BACKGROUND + ANSI_BLACK + peca.toString() + ANSI_RESET);
+                System.out.print(ANSI_YELLOW + peca.toString() + ANSI_RESET);
             }
         }
         System.out.printf(" ");
@@ -100,11 +102,11 @@ public class UI {
 
         System.out.println("Peças Capturadas:");
         System.out.print("Brancas: ");
-        System.out.print(ANSI_WHITE);
+        System.out.print(ANSI_WHITE_BACKGROUND);
         System.out.print(Arrays.toString(brancas.toArray()));
         System.out.println(ANSI_RESET);
         System.out.print("Pretas: ");
-        System.out.print(ANSI_WHITE_BACKGROUND);
+        System.out.print(ANSI_WHITE);
         System.out.print(Arrays.toString(pretas.toArray()));
         System.out.println(ANSI_RESET);
     }

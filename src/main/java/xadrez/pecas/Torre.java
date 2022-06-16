@@ -39,7 +39,6 @@ public class Torre extends PecaXadrez {
          */
         while (getTabuleiro().posicaoExiste(posicaoInicial) && !getTabuleiro().posicaoJaTemPeca(posicaoInicial)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
-            System.out.println("CIMA: Posição Linha" + (posicaoInicial.getLinha()));
             if (posicaoInicial.getLinha() > 0) {
                 posicaoInicial.setLinha(posicaoInicial.getLinha() - 1);
             } else {
