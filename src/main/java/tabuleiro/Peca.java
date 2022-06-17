@@ -1,6 +1,11 @@
 package tabuleiro;
 
 public abstract class Peca {
+    /**
+     * posição é protegida, pois é a posição na matriz
+     * somente quem estiver no pacote tabuleiro pode
+     * ter acesso a posição da peça
+     */
     protected Posicao posicao;
     private Tabuleiro tabuleiro;
 

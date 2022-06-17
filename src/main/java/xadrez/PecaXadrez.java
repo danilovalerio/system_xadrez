@@ -19,6 +19,10 @@ public abstract class PecaXadrez extends Peca {
         return color;
     }
 
+    public PosicaoXadrez getPosicaoXadrez(){
+        return PosicaoXadrez.dePosicaoParaPosicaXadrez(posicao);
+    }
+
     /**
      * operações disponível somente para classe e subclasses do mesmo pacote
      */

@@ -48,6 +48,9 @@ public class UI {
         System.out.println();
         System.out.println("Rodada: "+ partidaXadrez.getTurno());
         System.out.print("Aguardando jogador de peça: " + partidaXadrez.getJogadorAtual());
+        if (partidaXadrez.getCheck()) {
+          System.out.println(" XEQUE!");
+        }
     }
 
     public static void printBoard(PecaXadrez[][] pecas){
