@@ -73,6 +73,7 @@ public class Peao extends PecaXadrez {
 
     @Override
     public String toString() {
+        //em ingles é Pawn
         return "P";
     }
 }
