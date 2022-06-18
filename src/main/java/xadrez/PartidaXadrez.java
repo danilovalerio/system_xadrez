@@ -20,6 +20,7 @@ public class PartidaXadrez {
     private int turno;
     private Color jogadorAtual;
     private boolean check;
+    private boolean xequeMate;
 
     private List<Peca> pecasNoTabuleiro = new ArrayList<>();
     private List<Peca> pecasCapturadas = new ArrayList<>();
@@ -41,6 +42,10 @@ public class PartidaXadrez {
 
     public boolean getCheck(){
         return check;
+    }
+
+    public boolean getChequeMate(){
+        return xequeMate;
     }
 
     public PecaXadrez[][] getPecasXadrez(){
@@ -82,7 +87,13 @@ public class PartidaXadrez {
 
         check = (testaReiEmXeque(corOponente(jogadorAtual))) ? true : false;
 
-        proximoTurno();
+        if (testaReiEmXequeMate(corOponente(jogadorAtual))){
+            xequeMate = true;
+        } else {
+            proximoTurno();
+        }
+
+
         return (PecaXadrez) pecaCapturada;
     }
 
@@ -178,6 +189,37 @@ public class PartidaXadrez {
 
     }
 
+    private boolean testaReiEmXequeMate(Color color) {
+        if (!testaReiEmXeque(color)) {
+            return false;
+        }
+
+        List<Peca> pecas = pecasNoTabuleiro.stream().filter(
+                x -> ((PecaXadrez)x).getColor() == color)
+                .collect(Collectors.toList());
+
+        for (Peca p : pecas) {
+            boolean[][] matMovimentosPossiveis = p.movimentosPossiveis();
+            for (int lin = 0; lin > tabuleiro.getLinhas(); lin++){
+                for (int col = 0; col < tabuleiro.getColunas(); col++) {
+                    if (matMovimentosPossiveis[lin][col]){
+                        Posicao origem = ((PecaXadrez)p).getPosicaoXadrez().paraPosicaoMatriz();
+                        Posicao destino = new Posicao(lin, col);
+                        Peca capturada = realizaMovimento(origem, destino);
+                        boolean testCheck = testaReiEmXeque(color);
+                        desfazMovimento(origem, destino, capturada);
+                        if (!testCheck) {
+                            return false;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        return true;
+    }
+
     /**
      * Passa a posicao de coordenadas de matriz para a posição de coordenadas do xadrez
      * @param coluna da matriz
@@ -192,15 +234,9 @@ public class PartidaXadrez {
     private void initialSetup(){
         //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.BRANCO), new Posicao(2,1));
         posicaoNovaPeca('b', 7, new Torre(tabuleiro, Color.BRANCO));
-        posicaoNovaPeca('c', 7, new Torre(tabuleiro, Color.BRANCO));
-        posicaoNovaPeca('d', 7, new Torre(tabuleiro, Color.BRANCO));
-        //tabuleiro.posicaPeca(new Rei(tabuleiro, Color.PRETO), new Posicao(0,4));
-        posicaoNovaPeca('a', 8, new Rei(tabuleiro, Color.BRANCO));
-        //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.PRETO), new Posicao(0,5));
-        posicaoNovaPeca('a', 2, new Torre(tabuleiro, Color.PRETO));
-        posicaoNovaPeca('b', 2, new Torre(tabuleiro, Color.PRETO));
-        posicaoNovaPeca('c', 2, new Torre(tabuleiro, Color.PRETO));
-        posicaoNovaPeca('d', 2, new Torre(tabuleiro, Color.PRETO));
-        posicaoNovaPeca('a', 1, new Rei(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('d', 1, new Torre(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('e', 1, new Rei(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('b', 8, new Torre(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('a', 8, new Rei(tabuleiro, Color.PRETO));
     }
 }

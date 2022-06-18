@@ -14,7 +14,7 @@ public class Principal {
         PartidaXadrez chessMatch = new PartidaXadrez();
         List<PecaXadrez> capturada = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getChequeMate()) {
             try {
                 UI.limpaTela();
                 UI.printPartida(chessMatch, capturada);
@@ -40,8 +40,9 @@ public class Principal {
                 System.out.print("Pression ENTER para continuar...");
                 sc.nextLine();
             }
-
         }
+        UI.limpaTela();
+        UI.printPartida(chessMatch, capturada);
     }
 }
 

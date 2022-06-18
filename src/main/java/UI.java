@@ -47,9 +47,14 @@ public class UI {
         printPecasCatpuradas(pecasCapturadas);
         System.out.println();
         System.out.println("Rodada: "+ partidaXadrez.getTurno());
-        System.out.print("Aguardando jogador de peça: " + partidaXadrez.getJogadorAtual());
-        if (partidaXadrez.getCheck()) {
-          System.out.println(" XEQUE!");
+        if (!partidaXadrez.getChequeMate()){
+            System.out.print("Aguardando jogador de peça: " + partidaXadrez.getJogadorAtual());
+            if (partidaXadrez.getCheck()) {
+                System.out.println("XEQUE!");
+            }
+        } else {
+            System.out.println("XEQUE MATE");
+            System.out.println("VENCEDOR: "+ partidaXadrez.getJogadorAtual());
         }
     }
 
