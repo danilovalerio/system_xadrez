@@ -111,7 +111,7 @@ public class Torre extends PecaXadrez {
             }
         }
 
-        if (getTabuleiro().posicaoExiste(posicao) && eUmaPecaDoOponente(posicaoInicial)) {
+        if (getTabuleiro().posicaoExiste(posicao) && eUmaPecaDoOponente(posicao)) {
             mat[posicaoInicial.getLinha()][posicaoInicial.getColuna()] = true;
         }
 
