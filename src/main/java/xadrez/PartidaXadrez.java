@@ -234,8 +234,10 @@ public class PartidaXadrez {
 
     private void initialSetup(){
         //tabuleiro.posicaPeca(new Torre(tabuleiro, Color.BRANCO), new Posicao(2,1));
-        posicaoNovaPeca('d', 1, new Torre(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('a', 1, new Torre(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('h', 1, new Torre(tabuleiro, Color.BRANCO));
         posicaoNovaPeca('e', 1, new Rei(tabuleiro, Color.BRANCO));
+        posicaoNovaPeca('d', 1, new Rainha(tabuleiro, Color.BRANCO));
         posicaoNovaPeca('b', 1, new Cavalo(tabuleiro, Color.BRANCO));
         posicaoNovaPeca('g', 1, new Cavalo(tabuleiro, Color.BRANCO));
         posicaoNovaPeca('c', 1, new Bispo(tabuleiro, Color.BRANCO));
@@ -250,6 +252,7 @@ public class PartidaXadrez {
         posicaoNovaPeca('g', 2, new Peao(tabuleiro, Color.BRANCO));
         posicaoNovaPeca('h', 2, new Peao(tabuleiro, Color.BRANCO));
 
+        posicaoNovaPeca('d', 8, new Rainha(tabuleiro, Color.PRETO));
         posicaoNovaPeca('b', 8, new Cavalo(tabuleiro, Color.PRETO));
         posicaoNovaPeca('g', 8, new Cavalo(tabuleiro, Color.PRETO));
         posicaoNovaPeca('c', 8, new Bispo(tabuleiro, Color.PRETO));
@@ -263,6 +266,7 @@ public class PartidaXadrez {
         posicaoNovaPeca('g', 7, new Peao(tabuleiro, Color.PRETO));
         posicaoNovaPeca('h', 7, new Peao(tabuleiro, Color.PRETO));
         posicaoNovaPeca('a', 8, new Torre(tabuleiro, Color.PRETO));
-        posicaoNovaPeca('d', 8, new Rei(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('h', 8, new Torre(tabuleiro, Color.PRETO));
+        posicaoNovaPeca('e', 8, new Rei(tabuleiro, Color.PRETO));
     }
 }
