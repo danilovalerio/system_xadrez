@@ -13,3 +13,7 @@
 ###En Passant (De passagem)
 ####Se o peão a partir da posição inicial dele mover 2 casas a frente e 
 ####tiver um peão oponente ao seu lado ele será capturado se o peão oponente mover em direção a ele
+
+###Promotion (Promoção) //FALTOU TESTAR ESSA JOGADA
+####Quando um peão percorre todo o tabuleiro e chega na útlima casa
+####ele será substituído (promovido) por TORRE, CAVALO, BISPO ou RAINHA de acordo com a escolha do jogador

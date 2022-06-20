@@ -35,6 +35,12 @@ public class Principal {
                 if (pecaCapturada != null) {
                     capturada.add(pecaCapturada);
                 }
+
+                if (chessMatch.getPromovido() != null) {
+                    System.out.println("Entre com a peça para promoção (B/C/T/Q)");
+                    String tipo = sc.nextLine();
+                    chessMatch.substituiPecaPromovida(tipo);
+                }
             } catch (XadrezException | InputMismatchException e) {
                 System.out.println(e.getMessage());
                 System.out.print("Pression ENTER para continuar...");
