@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import xadrez.PartidaXadrez;
 import xadrez.PecaXadrez;
 import xadrez.PosicaoXadrez;
@@ -38,8 +35,13 @@ public class Principal {
 
                 if (chessMatch.getPromovido() != null) {
                     System.out.println("Entre com a peça para promoção (B/C/T/Q)");
-                    String tipo = sc.nextLine();
-                    chessMatch.substituiPecaPromovida(tipo);
+                    String tipoPeca = sc.nextLine().toUpperCase(Locale.ROOT);
+
+                    while (!tipoPeca.equals("T") && !tipoPeca.equals("C") && !tipoPeca.equals("B") && !tipoPeca.equals(
+                            "Q")){
+                        System.out.println("Tipo inválido de Peça, escolha outra (B/C/T/Q):");
+                    }
+                    chessMatch.substituiPecaPromovida(tipoPeca);
                 }
             } catch (XadrezException | InputMismatchException e) {
                 System.out.println(e.getMessage());

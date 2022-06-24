@@ -135,7 +135,7 @@ public class PartidaXadrez {
         }
 
         if (!tipoPeca.equals("T") && !tipoPeca.equals("C") && !tipoPeca.equals("B") && !tipoPeca.equals("Q")){
-            throw new IllegalStateException("Tipo inválido de Peça, escolha outra.");
+            return promovido;
         }
 
         Posicao pos = promovido.getPosicaoXadrez().paraPosicaoMatriz();
